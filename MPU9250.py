@@ -1,4 +1,4 @@
-import time
+#Datenlesen vom MPU-9250 Sensor: Magnetometer, Accelerator und Gyroskop
 from mpu9250_jmdev.registers import *
 from mpu9250_jmdev.mpu_9250 import MPU9250
 
@@ -16,16 +16,9 @@ mpu = MPU9250(
 # Configure the MPU9250
 mpu.configure()
 
-while True:
+def pullData():
     # Read the accelerometer, gyroscope, and magnetometer values
     accel_data = mpu.readAccelerometerMaster()
     gyro_data = mpu.readGyroscopeMaster()
     mag_data = mpu.readMagnetometerMaster()
-
-    # Print the sensor values
-    print("Accelerometer:", accel_data)
-    print("Gyroscope:", gyro_data)
-    print("Magnetometer:", mag_data)
-
-    # Wait for 1 second before the next reading
-    time.sleep(1)
+    return [accel_data, gyro_data, mag_data]
