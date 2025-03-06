@@ -1,0 +1,2 @@
+smbus2
+mpu9250-jmdev
